@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "Ducklink Attendance",
+  "version": "0.1",
+  "description": "Shows attendance for Ducklink events",
+
+  "browser_action": {
+    "default_title": "ducklink",
+    "default_icon": "ducklink.png",
+    "default_popup": "popup.html"
+  },
+
+  "permissions": [
+    "https://*.campuslabs.com/engage/*",
+    "https://se-app-checkins.azurewebsites.net/*",
+    "tabs"
+  ],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.campuslabs.com/engage/organization/*/events"],
+      "js": ["jquery.min.js", "content.js"]
+    }
+  ]
+}
