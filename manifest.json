@@ -11,19 +11,30 @@
   },
 
   "permissions": [
+    "https://ducklink.stevens.edu/*",
     "https://*.campuslabs.com/engage/*",
     "https://se-app-checkins.azurewebsites.net/*",
     "tabs"
   ],
 
   "background": {
-    "scripts": ["background.js"]
+    "scripts": [
+      "browser-polyfill.js",
+      "background.js"
+    ]
   },
 
   "content_scripts": [
     {
-      "matches": ["https://*.campuslabs.com/engage/organization/*/events"],
-      "js": ["jquery.min.js", "content.js"]
+      "matches": [
+        "https://ducklink.stevens.edu/organization/*/events",
+        "https://*.campuslabs.com/engage/organization/*/events"
+      ],
+      "js": [
+        "jquery.min.js",
+        "browser-polyfill.js",
+        "content.js"
+      ]
     }
   ]
 }

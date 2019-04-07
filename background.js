@@ -29,7 +29,10 @@ let accessToken = 'error'
 async function getToken() {
   console.log('[bg]', 'acquiring token')
   try {
-    let res = await fetch(url, {mode: 'cors'})
+    let res = await fetch(url, {
+      mode: 'cors',
+      credentials: 'include',
+    })
     let data = await res.json()
     console.log('[bg]', data)
     accessToken = data.accessToken
